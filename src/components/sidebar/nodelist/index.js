@@ -5,30 +5,24 @@ import React from "react";
 class NodeList extends React.Component {
     render() {
         const theme = this.context;
+        const dfs = this.extracted(theme);
         return (
             <div>
-                This Will asdfbe a Node List
                 <section>
-                    <Checkbox
-                        label='Hello Worladfadfd'
-                        name='test-1'
-                        value={1}
-                        theme={theme}/>
-                    <Checkbox
-                        label='Hello World'
-                        disabled={true}
-                        name='test-2'
-                        value={1}
-                        theme={theme}/>
-                    <Checkbox
-                        label='Hello World'
-                        defaultChecked={true}
-                        name='test-3'
-                        value={1}
-                        theme={theme}/>
+                    {dfs}
                 </section>
             </div>
         )
+    }
+
+    extracted(theme) {
+        const dfs = [];
+        // const nodes  = this.props.nodes_and_atts;
+        const nodes = [1, 2, 3, 4, 5];
+        nodes.forEach((node) => {
+            dfs.push(<Checkbox label={node} name={String(node)} value={1} key={node} theme={theme}/>);
+        });
+        return dfs;
     }
 }
 
