@@ -33,7 +33,7 @@ export default Sidebar;
 // todo:    background color right
 // todo: collapse sidebar
 // todo: improve desing search bar
-// todo: right font
+// todo: right font DONE!
 // todo:
 // todo:
 // todo:

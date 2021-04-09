@@ -1,5 +1,6 @@
 import ThemeContext from "../../theme";
 import React from "react";
+import './node-list.scss'
 
 /**
  * A list of datasets
@@ -28,15 +29,16 @@ DatasetList.contextType = ThemeContext
 class SingleDatasetAttributes extends React.Component {
     render(){
         return(
-            <>
+            <nav className="pipeline-nodelist-section kedro" >
                 <li>
-                <h1>{this.props.name}</h1>
+                    <h1 className={'pipeline-nodelist-section__title'}>{this.props.name}</h1>
                 </li>
 
                 <ul>
+                    {/*<ul className="pipeline-nodelist__list">*/}
                     {this.props.att.map((att) => (<AttributeList id={att.id} name={att.name} key={att.id}/> ))}
                 </ul>
-            </>
+            </nav>
         )
     }
 
