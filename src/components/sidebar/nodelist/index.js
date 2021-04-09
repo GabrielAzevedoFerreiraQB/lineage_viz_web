@@ -1,30 +1,58 @@
-import Checkbox from "@quantumblack/kedro-ui/lib/components/checkbox/checkbox";
 import ThemeContext from "../../theme";
 import React from "react";
 
-class NodeList extends React.Component {
+/**
+ * A list of datasets
+ *
+ */
+class DatasetList extends React.Component {
     render() {
-        const theme = this.context;
-        const dfs = this.extracted(theme);
+        const items = [
+            {id:1, name:'some name1', attributes: [{id:5,name: 'some att'},{id:6,name: 'some att'}]},
+            {id:2, name:'some name2', attributes: [{id:5,name: 'some att'},{id:6,name: 'some att'}]},
+            {id:3, name:'some name3', attributes: [{id:5,name: 'some att'},{id:6,name: 'some att'}]},
+            {id:4, name:'some name4', attributes: [{id:5,name: 'some att'},{id:6,name: 'some att'}]},
+            ];
+
         return (
             <div>
-                <section>
-                    {dfs}
-                </section>
+                <ul>
+                    {items.map((item) => (<SingleDatasetAttributes id={item.id} name={item.name} key={item.id} att={item.attributes}/> ))}
+                </ul>
             </div>
         )
     }
+}
+DatasetList.contextType = ThemeContext
 
-    extracted(theme) {
-        const dfs = [];
-        // const nodes  = this.props.nodes_and_atts;
-        const nodes = [1, 2, 3, 4, 5];
-        nodes.forEach((node) => {
-            dfs.push(<Checkbox label={node} name={String(node)} value={1} key={node} theme={theme}/>);
-        });
-        return dfs;
+class SingleDatasetAttributes extends React.Component {
+    render(){
+        return(
+            <>
+                <li>
+                <h1>{this.props.name}</h1>
+                </li>
+
+                <ul>
+                    {this.props.att.map((att) => (<AttributeList id={att.id} name={att.name} key={att.id}/> ))}
+                </ul>
+            </>
+        )
     }
+
 }
 
-NodeList.contextType = ThemeContext
-export default NodeList;
+
+
+
+class  AttributeList extends React.Component {
+    render() {
+        return (
+            <li>{this.props.name}</li>
+        )
+    }
+}
+AttributeList.contextType = ThemeContext
+
+
+export default DatasetList;

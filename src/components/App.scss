@@ -1,0 +1,114 @@
+//-- Colours --//
+
+$color-dark: black;
+$color-light: white;
+$color-primary: #00b0f5;
+$color-link: rgba($color-primary, 0.85);
+
+//-- Theme colours as SCSS variables --//
+
+// Light:
+$color-text-light: rgba(black, 0.85);
+$color-text-light-alt: rgba(white, 0.85);
+$color-bg-light-1: #ccd1d6;
+$color-bg-light-2: #e6e8eb;
+$color-bg-light-3: #f0f1f3;
+$color-bg-light-4: #f8f9fa;
+$color-bg-light-alt: #242525;
+
+// Dark:
+$color-text-dark: rgba(white, 0.85);
+$color-text-dark-alt: rgba(black, 0.85);
+$color-bg-dark-1: #001521;
+$color-bg-dark-2: #031a26;
+$color-bg-dark-3: #061c28;
+$color-bg-dark-4: #0e2330;
+$color-bg-dark-5: #122531;
+$color-bg-dark-6: #2a3b46;
+$color-bg-dark-alt: white;
+
+//-- Layout --//
+
+$sidebar-padding: 1.8em;
+
+// These values are used in both SCSS and JS, and we don't have variable-sharing
+// across Sass and JavaScript, so they're defined in two places. If you update their
+// value here, please also update their corresponding value in src/config.js
+$sidebar-width-open: 400px;
+$sidebar-width-closed: 56px;
+$sidebar-width-breakpoint: 700px;
+
+$metadata-sidebar-width-open: 400px;
+$metadata-sidebar-width-closed: 0;
+
+$metadata-sidebar-code-open: 480px;
+$metadata-sidebar-code-closed: 0;
+$metadata-sidebar-code-breakpoint: 1200px;
+
+//-- Theme colours as CSS Custom Properties --//
+
+.kui-theme--light {
+  --color-default: #{$color-light};
+  --color-default-alt: #{$color-dark};
+  --color-text: #{$color-text-light};
+  --color-text-alt: #{$color-text-light-alt};
+  --color-bg-1: #{$color-bg-light-1};
+  --color-bg-2: #{$color-bg-light-2};
+  --color-bg-3: #{$color-bg-light-3};
+  --color-bg-4: #{$color-bg-light-4};
+  --color-bg-alt: #{$color-bg-light-alt};
+  --color-sidebar-background: #{$color-bg-light-3};
+  --color-sidebar-border: rgba(0, 0, 0, 0.05);
+  --color-sidebar-shadow: rgba(0, 0, 0, 0.07);
+}
+
+.kui-theme--dark {
+  --color-default: #{$color-dark};
+  --color-default-alt: #{$color-light};
+  --color-text: #{$color-text-dark};
+  --color-text-alt: #{$color-text-dark-alt};
+  --color-bg-1: #{$color-bg-dark-1};
+  --color-bg-2: #{$color-bg-dark-2};
+  --color-bg-3: #{$color-bg-dark-3};
+  --color-bg-4: #{$color-bg-dark-4};
+  --color-bg-5: #{$color-bg-dark-5};
+  --color-bg-6: #{$color-bg-dark-6};
+  --color-bg-alt: #{$color-light};
+  --color-sidebar-background: #{$color-bg-dark-2};
+  --color-sidebar-border: rgba(0, 0, 0, 0.2);
+  --color-sidebar-shadow: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  margin: 0; }
+
+
+.kedro {
+  font-size: 0.625rem; }
+
+.kedro-pipeline {
+  position: relative;
+  //height: 100%;
+  overflow: hidden;
+  color: var(--color-text);
+  background: var(--color-bg-1);
+  height: 100vh; }
+
+
+.pipeline-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%); }
+
+.pipeline-wrapper {
+  height: 100%; }
+
+.pipeline-wrapper__loading {
+  position: absolute;
+  right: 20px;
+  bottom: 20px; }
+

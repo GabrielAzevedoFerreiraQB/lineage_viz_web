@@ -3,18 +3,22 @@ import SearchBar from '@quantumblack/kedro-ui/lib/components/search-bar';
 import './index.css';
 import classnames from "classnames";
 import ThemeContext from "../theme";
-import NodeList from "./nodelist";
+import DatasetList from "./nodelist";
 
 class Sidebar extends React.Component {
     // static contextType = ThemeContext;
     render() {
         console.log(this.context);
         const theme = this.context;
+
+        var group = {
+
+        };
         return (
             <div className={classnames('pipeline-sidebar', {'pipeline-sidebar--visible': true})}>
                 <div className="pipeline-ui">
                     <SearchBar theme={theme}/>
-                    <NodeList/>
+                    <DatasetList/>
                 </div>
             </div>
         )
