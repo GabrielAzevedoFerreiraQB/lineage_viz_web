@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+// import './index.css';
 // import App from './basic_components/App';
 import App from './components/App';
+import getDataFromPipeline from './utils/load-data'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App data={getDataFromPipeline()}/>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

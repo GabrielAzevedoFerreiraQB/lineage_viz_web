@@ -3,26 +3,36 @@ import './App.scss';
 import Sidebar from "./sidebar";
 import ThemeContext from "./theme";
 import classnames from "classnames";
+import '@quantumblack/kedro-ui/lib/styles/app-no-webfont.css';
 
-function App() {
-  return (
-      <ThemeContext.Provider value={'light'}>
-        <Wrapper theme={'dark'}/>
-      </ThemeContext.Provider>
 
-  );
+class App extends React.Component {
+    render() {
+        return (
+            <ThemeContext.Provider value={'dark'}>
+                <Wrapper/>
+            </ThemeContext.Provider>
+
+        );
+    }
 }
 
-const Wrapper = ({theme }) => (
-    <div
-        className={classnames('kedro-pipeline kedro', {
-            'kui-theme--dark': theme === 'dark',
-            'kui-theme--light': theme === 'light',
-        })}>>
-        <h1>Spark lineage viz</h1>
-        <Sidebar/>
-        {/*Diagram will be added here*/}
-    </div>
-);
+class Wrapper extends React.Component {
+    render() {
+        const theme = this.context;
+        return (
+            <div
+                className={classnames('kedro-pipeline kedro', {
+                    'kui-theme--dark': theme === 'dark',
+                    'kui-theme--light': theme === 'light',
+                })}>>
+                <Sidebar/>
+                {/*Diagram will be added here*/}
+            </div>
+        );
+    }
+
+}
+Wrapper.contextType = ThemeContext
 
 export default App;

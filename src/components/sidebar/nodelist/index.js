@@ -8,7 +8,7 @@ import React from "react";
 class DatasetList extends React.Component {
     render() {
         const items = [
-            {id:1, name:'some name1', attributes: [{id:5,name: 'some att'},{id:6,name: 'some att'}]},
+            {id:1, name:'Tags some name1', attributes: [{id:5,name: 'some att'},{id:6,name: 'some att'}]},
             {id:2, name:'some name2', attributes: [{id:5,name: 'some att'},{id:6,name: 'some att'}]},
             {id:3, name:'some name3', attributes: [{id:5,name: 'some att'},{id:6,name: 'some att'}]},
             {id:4, name:'some name4', attributes: [{id:5,name: 'some att'},{id:6,name: 'some att'}]},

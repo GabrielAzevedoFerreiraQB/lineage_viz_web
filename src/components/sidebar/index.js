@@ -11,9 +11,6 @@ class Sidebar extends React.Component {
         console.log(this.context);
         const theme = this.context;
 
-        var group = {
-
-        };
         return (
             <div className={classnames('pipeline-sidebar', {'pipeline-sidebar--visible': true})}>
                 <div className="pipeline-ui">
@@ -35,4 +32,8 @@ export default Sidebar;
 // todo: collapse and toggle
 // todo:    background color right
 // todo: collapse sidebar
+// todo: improve desing search bar
+// todo: right font
+// todo:
+// todo:
 // todo:
