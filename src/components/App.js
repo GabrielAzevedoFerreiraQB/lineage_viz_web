@@ -3,10 +3,10 @@ import './App.scss';
 import Sidebar from "./sidebar";
 import ThemeContext from "./theme";
 import classnames from "classnames";
-import '@quantumblack/kedro-ui/lib/styles/app-no-webfont.css';
 
 
 class App extends React.Component {
+
     render() {
         return (
             <ThemeContext.Provider value={'dark'}>
