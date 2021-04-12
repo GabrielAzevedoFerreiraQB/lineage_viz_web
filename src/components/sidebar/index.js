@@ -1,10 +1,11 @@
 import React  from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import NodeList from '@quantumblack/kedro-viz/lib/components/node-list';
+// import NodeList from '@quantumblack/kedro-viz/lib/components/node-list';
 // import PrimaryToolbar from '@quantumblack/kedro-viz/lib/components/primary-toolbar';
 import '@quantumblack/kedro-viz/lib/components/sidebar/sidebar.css';
 import PrimaryToolbar from "./primary-toolbar";
+import NodeListProvider from './node-list/index'
 
 
 /**
@@ -13,7 +14,6 @@ import PrimaryToolbar from "./primary-toolbar";
  */
 export const Sidebar = ({ visible }) => {
     // const [pipelineIsOpen, togglePipeline] = useState(false);
-
     return (
         <>
             <div
@@ -22,7 +22,7 @@ export const Sidebar = ({ visible }) => {
                 })}>
                 <div className="pipeline-ui">
                     {/*<PipelineList onToggleOpen={togglePipeline} />*/}
-                    <NodeList/>
+                    <NodeListProvider/>
                 </div>
                 <nav className="pipeline-toolbar">
                     <PrimaryToolbar />
