@@ -1,31 +1,43 @@
-import React from "react";
-import SearchBar from '@quantumblack/kedro-ui/lib/components/search-bar';
-import './index.css';
-import classnames from "classnames";
-import ThemeContext from "../theme";
-import DatasetList from "./nodelist";
+import React  from 'react';
+import { connect } from 'react-redux';
+import classnames from 'classnames';
+import NodeList from '@quantumblack/kedro-viz/lib/components/node-list';
+// import PrimaryToolbar from '@quantumblack/kedro-viz/lib/components/primary-toolbar';
+import '@quantumblack/kedro-viz/lib/components/sidebar/sidebar.css';
+import PrimaryToolbar from "./primary-toolbar";
 
-class Sidebar extends React.Component {
-    // static contextType = ThemeContext;
-    render() {
-        console.log(this.context);
-        const theme = this.context;
 
-        return (
-            <div className={classnames('pipeline-sidebar', {'pipeline-sidebar--visible': true})}>
+/**
+ * Main app container. Handles showing/hiding the sidebar nav, and theme classes.
+ * @param {boolean} props.visible Whether the sidebar is open/closed
+ */
+export const Sidebar = ({ visible }) => {
+    // const [pipelineIsOpen, togglePipeline] = useState(false);
+
+    return (
+        <>
+            <div
+                className={classnames('pipeline-sidebar', {
+                    'pipeline-sidebar--visible': visible,
+                })}>
                 <div className="pipeline-ui">
-                    <SearchBar theme={theme}/>
-                    <DatasetList/>
+                    {/*<PipelineList onToggleOpen={togglePipeline} />*/}
+                    <NodeList/>
                 </div>
+                <nav className="pipeline-toolbar">
+                    <PrimaryToolbar />
+                    {/*<MiniMapToolbar />*/}
+                </nav>
             </div>
-        )
-    }
-}
+        </>
+    );
+};
 
-Sidebar.contextType = ThemeContext
+const mapStateToProps = (state) => ({
+    visible: state.visible.sidebar,
+});
 
-
-export default Sidebar;
+export default connect(mapStateToProps)(Sidebar);
 
 
 // todo:    list of nodes and att passed as input
