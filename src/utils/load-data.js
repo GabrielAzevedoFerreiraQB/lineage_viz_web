@@ -69,25 +69,38 @@ function getDataFromPipeline(){
             "pipelines": ["__default__", "de"],
             "type": "DataFrame2"
         },
-        {
-            "full_name": "att5",
-            "id": "9bd2dc3d",
-            "name": "Att 5",
-            "tags": ["DataFrame2"],
-            "layer": "Model Output",
-            "pipelines": ["__default__", "de"],
-            "type": "DataFrame2"
-        },
+            {
+                "full_name": "att5",
+                "id": "9bd2dc3d",
+                "name": "Att 5",
+                "tags": ["DataFrame2"],
+                "layer": "Model Output",
+                "pipelines": ["__default__", "de"],
+                "type": "DataFrame2"
+            },
+            {
+                "full_name": "att6",
+                "id": "9bd2dc35",
+                "name": "Att 6",
+                "tags": ["DataFrame3"],
+                "layer": "Model Output",
+                "pipelines": ["__default__", "de"],
+                "type": "DataFrame3"
+            },
     ],
         "tags": [
         {
             "id": "DataFrame1",
             "name": "DataFrame1"
         },
-        {
-            "id": "DataFrame2",
-            "name": "DataFrame2"
-        },
+            {
+                "id": "DataFrame2",
+                "name": "DataFrame2"
+            },
+            {
+                "id": "DataFrame3",
+                "name": "DataFrame3"
+            },
     ]
     }
 

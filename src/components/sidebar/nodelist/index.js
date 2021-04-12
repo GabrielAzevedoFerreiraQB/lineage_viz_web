@@ -1,4 +1,3 @@
-import ThemeContext from "../../theme";
 import React from "react";
 import './node-list.scss'
 
@@ -24,7 +23,6 @@ class DatasetList extends React.Component {
         )
     }
 }
-DatasetList.contextType = ThemeContext
 
 class SingleDatasetAttributes extends React.Component {
     render(){
@@ -54,7 +52,6 @@ class  AttributeList extends React.Component {
         )
     }
 }
-AttributeList.contextType = ThemeContext
 
 
 export default DatasetList;

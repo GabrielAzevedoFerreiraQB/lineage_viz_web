@@ -61,7 +61,6 @@ const NodeListProvider = ({
                               faded,
                               nodes,
                               nodeSelected,
-                              // sections,
                               tags,
                               tagsEnabled,
                               types,
@@ -73,6 +72,11 @@ const NodeListProvider = ({
                               onToggleTypeDisabled,
                           }) => {
     const [searchValue, updateSearchValue] = useState('');
+    console.log(nodes)
+    console.log(tags)
+    console.log(tagsEnabled)
+    console.log(nodeSelected)
+    console.log(searchValue)
     const items = getFilteredItems({
         nodes,
         tags,
@@ -80,6 +84,7 @@ const NodeListProvider = ({
         nodeSelected,
         searchValue,
     });
+    delete items.tag
     const groups = getGroups({ types, items });
 
     const onItemClick = (item) => {
@@ -171,7 +176,7 @@ const NodeListProvider = ({
     });
     // sections = [{'name':'Datasets', types:['data']}]
     const sections = [{
-        'name':'Datasets___',
+        'name':'Datasets',
         'types': Object.entries(items).map((el)=>(el[0]))
     }]
     console.log('nodes')
@@ -205,7 +210,6 @@ export const mapStateToProps = (state) => ({
     tagsEnabled: state.tag.enabled,
     nodes: getGroupedNodes(state),
     nodeSelected: getNodeSelected(state),
-    // sections: getSections(state),
     types: getNodeTypes(state),
 });
 

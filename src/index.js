@@ -5,11 +5,10 @@ import App from './components/App';
 import getDataFromPipeline from './utils/load-data'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App data={getDataFromPipeline()}/>
-
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <App data={getDataFromPipeline()}/>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,4 +1,3 @@
-import React from 'react';
 import {PrimaryToolbar} from "@quantumblack/kedro-viz/lib/components/primary-toolbar";
 import { connect } from 'react-redux';
 import {
