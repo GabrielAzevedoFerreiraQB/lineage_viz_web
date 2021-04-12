@@ -21,7 +21,6 @@ const NodeList = ({
                       onItemMouseEnter,
                       onItemMouseLeave,
                       onItemChange,
-                      hierarchy,
                   }) => (
     <div
         className={classnames('pipeline-nodelist', {
@@ -47,7 +46,6 @@ const NodeList = ({
                 onItemMouseLeave={onItemMouseLeave}
                 onItemChange={onItemChange}
                 onToggleGroupChecked={onToggleGroupChecked}
-                hierarchy={hierarchy}
             />
         </Scrollbars>
     </div>

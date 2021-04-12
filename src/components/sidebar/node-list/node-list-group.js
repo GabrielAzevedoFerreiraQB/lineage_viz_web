@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
-import NodeListRow from '@quantumblack/kedro-viz/lib/components/node-list/node-list-row';
 import NodeRowList from '@quantumblack/kedro-viz/lib/components/node-list/node-list-row-list';
+import NodeListRow from "./node-list-row";
 
 export const NodeListGroup = ({
                                   items,

@@ -22,13 +22,12 @@ class Wrapper extends React.Component {
         super(props);
         const initialState = getInitialState(props);
         this.store = configureStore(initialState);
-        console.log('constructor:')
-        console.log(this.store.getState())
+        // console.log('constructor:')
+        // console.log(this.store.getState())
     }
 
     render() {
-        console.log('render:')
-        console.log(this.store.getState())
+        // console.log('render:')
         const theme = this.context;
         return (
             <div
@@ -38,9 +37,9 @@ class Wrapper extends React.Component {
                 })}>>
                 <Provider store={this.store}>
                     <Sidebar/>
+                    {/*Diagram will be added here*/}
                 </Provider>
 
-                {/*Diagram will be added here*/}
             </div>
         );
     }

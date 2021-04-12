@@ -14,8 +14,7 @@ const NodeListGroups = ({
                             onItemMouseEnter,
                             onItemMouseLeave,
                             onItemChange,
-                            hierarchy,
-                        }) => {
+                                }) => {
     const [collapsed, setCollapsed] = useState(storedState.groupsCollapsed || {});
 
     // Collapse/expand node group
@@ -26,20 +25,22 @@ const NodeListGroups = ({
         setCollapsed(groupsCollapsed);
         saveState({ groupsCollapsed });
     };
-    console.log(groups)
+    console.log(items)
+    console.log(sections)
     return sections.map((section) => (
         <nav className="pipeline-nodelist-section kedro" key={section.name}>
             <h2 className="pipeline-nodelist-section__title">{section.name}</h2>
             <ul className="pipeline-nodelist__list">
-                {section.types.map((typeId) => { // change here!
+                {section.types.map((typeId) => {
                     const group = groups[typeId];
+                    console.log(group)
                     return (
                         <NodeListGroup
                             group={group}
                             items={items[group.id] || []}
                             key={group.id}
                             id={group.id}
-                            name={group.name}
+                            name={group.id} // todo: replace by name
                             kind={group.kind}
                             checked={group.checked}
                             childCount={group.count}

@@ -2,20 +2,50 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import utils from '@quantumblack/kedro-ui/lib/utils';
 import NodeList from './node-list'
-import { getFilteredItems, getGroups, getSections } from '@quantumblack/kedro-viz/lib/components/node-list/node-list-items';
+import {
+    createGroup,
+    getFilteredItems,
+    // getGroups,
+    // getSections
+} from '@quantumblack/kedro-viz/lib/components/node-list/node-list-items';
 import { toggleTagActive, toggleTagFilter } from '@quantumblack/kedro-viz/lib/actions/tags';
 import { toggleTypeDisabled } from '@quantumblack/kedro-viz/lib/actions/node-type';
 import { getNodeTypes } from '@quantumblack/kedro-viz/lib/selectors/node-types';
 import { getTagData } from '@quantumblack/kedro-viz/lib/selectors/tags';
-import { getGroupedNodes, getNodeSelected } from '@quantumblack/kedro-viz/lib/selectors/nodes';
+import { getNodeSelected } from '@quantumblack/kedro-viz/lib/selectors/nodes';
 import {
     loadNodeData,
     toggleNodeHovered,
     toggleNodesDisabled,
 } from '@quantumblack/kedro-viz/lib/actions/nodes';
 import '@quantumblack/kedro-viz/lib/components/node-list/styles/node-list.css';
+import {getGroupedNodes} from "./selector";
+import { createSelector } from 'reselect';
 
 const isTagType = (type) => type === 'tag';
+
+
+/**
+ * Returns groups of items per type
+ * @param {array} types List of node types
+ * @param {array} items List of items
+ * @return {array} List of groups
+ */
+export const getGroups = createSelector(
+    [(state) => state.types, (state) => state.items],
+    (nodeTypes, items) => {
+        console.log('nodeTypes')
+        console.log(nodeTypes)
+        console.log('items...')
+        console.log( Object.entries(items))
+        const groups = {};
+        for (const it of Object.entries(items)) {
+            groups[it[0]] = createGroup({'id':it[0]}, it);
+        }
+        return groups;
+    }
+);
+
 
 /**
  * Provides data from the store to populate a NodeList component.
@@ -31,7 +61,7 @@ const NodeListProvider = ({
                               faded,
                               nodes,
                               nodeSelected,
-                              sections,
+                              // sections,
                               tags,
                               tagsEnabled,
                               types,
@@ -139,23 +169,25 @@ const NodeListProvider = ({
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
     });
-
+    // sections = [{'name':'Datasets', types:['data']}]
+    const sections = [{
+        'name':'Datasets___',
+        'types': Object.entries(items).map((el)=>(el[0]))
+    }]
+    console.log('nodes')
+    console.log(nodes)
     console.log('items')
     console.log(items)
     console.log('sec')
-    sections[1]={'name':'els', types:['data']}
     console.log(sections)
-    const hierarchy = [
-        {"sec1": [
-                {'ds1':[items.data[0]]}
-            ]}
-    ]
+    console.log('groups')
+    console.log(groups)
 
     return (
         <NodeList
             faded={faded}
             items={items}
-            sections={[{'name':'Datasets', types:['data']}]}
+            sections={sections}
             groups={groups}
             searchValue={searchValue}
             onUpdateSearchValue={updateSearchValue}
@@ -164,7 +196,6 @@ const NodeListProvider = ({
             onItemMouseEnter={onItemMouseEnter}
             onItemMouseLeave={onItemMouseLeave}
             onItemChange={onItemChange}
-            hierarchy={hierarchy}
         />
     );
 };
@@ -174,7 +205,7 @@ export const mapStateToProps = (state) => ({
     tagsEnabled: state.tag.enabled,
     nodes: getGroupedNodes(state),
     nodeSelected: getNodeSelected(state),
-    sections: getSections(state),
+    // sections: getSections(state),
     types: getNodeTypes(state),
 });
 

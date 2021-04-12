@@ -1,7 +1,7 @@
 
 
 function getDataFromPipeline(){
-    // todo this is temporary.
+    // todo this is temporary. todo: rename tags to dataset
     // Later we'll change to loading the true lineage
     return  {
         "source": 'demo',
@@ -34,107 +34,60 @@ function getDataFromPipeline(){
     ],
         "nodes": [
         {
-            "full_name": "sales_model_performance_monitoring",
+            "full_name": "att1",
             "id": "53b05b01",
-            "name": "Sales Model Performance Monitoring",
-            "tags": ["model_performance_monitoring", "data_science"],
+            "name": "Att 1",
+            "tags": ["DataFrame1"],
             "layer": "Reporting",
             "pipelines": ["__default__", "ds"],
-            "type": "task"
+            "type": "DataFrame1"
         },
         {
-            "full_name": "salesforce_accounts",
+            "full_name": "att2",
             "id": "42e79d42",
-            "name": "Salesforce Accounts",
-            "tags": ["feature_engineering", "data_engineering"],
+            "name": "Att 2",
+            "tags": ["DataFrame1"],
             "layer": "Raw",
             "pipelines": ["__default__", "de"],
-            "type": "data"
+            "type": "DataFrame1"
         },
         {
-            "full_name": "params:_sales_model",
-            "id": "1b3afcba",
-            "name": "params: Sales Model",
-            "tags": ["data_science", "model_training"],
-            "layer": "Model Input",
-            "pipelines": ["__default__", "de"],
-            "type": "parameters"
-        },
-        {
-            "full_name": "engagement_trained_model",
+            "full_name": "att3",
             "id": "f4f3a276",
-            "name": "Engagement Trained Model",
-            "tags": ["model_explanation", "data_science", "model_training"],
+            "name": "Att 3",
+            "tags": ["DataFrame1"],
             "layer": "Models",
             "pipelines": ["__default__", "de"],
-            "type": "data"
+            "type": "DataFrame1"
         },
         {
-            "full_name": "sales_model_explanations",
+            "full_name": "att4",
             "id": "792a14f6",
-            "name": "Sales Model Explanations",
-            "tags": [
-                "model_explanation",
-                "data_science",
-                "model_performance_monitoring",
-                "reporting"
-            ],
+            "name": "Att 4",
+            "tags": ["DataFrame2"],
             "layer": "Model Output",
             "pipelines": ["__default__", "de"],
-            "type": "data"
+            "type": "DataFrame2"
         },
         {
-            "full_name": "engagement_model_explanations",
+            "full_name": "att5",
             "id": "9bd2dc3d",
-            "name": "Engagement Model Explanations",
-            "tags": [
-                "model_explanation",
-                "data_science",
-                "model_performance_monitoring",
-                "reporting"
-            ],
+            "name": "Att 5",
+            "tags": ["DataFrame2"],
             "layer": "Model Output",
             "pipelines": ["__default__", "de"],
-            "type": "data"
+            "type": "DataFrame2"
         },
     ],
         "tags": [
         {
-            "id": "model_performance_monitoring",
-            "name": "Model Performance Monitoring"
+            "id": "DataFrame1",
+            "name": "DataFrame1"
         },
         {
-            "id": "data_science",
-            "name": "Data Science"
+            "id": "DataFrame2",
+            "name": "DataFrame2"
         },
-        {
-            "id": "reporting",
-            "name": "Reporting"
-        },
-        {
-            "id": "model_training",
-            "name": "Model Training"
-        },
-        {
-            "id": "preprocessing",
-            "name": "Preprocessing"
-        },
-        {
-            "id": "optimisation",
-            "name": "Optimisation"
-        },
-        {
-            "id": "model_explanation",
-            "name": "Model Explanation"
-        },
-        {
-            "id": "feature_engineering",
-            "name": "Feature Engineering"
-        },
-        {
-            "id": "data_engineering",
-            "name": "Data Engineering"
-        }
     ]
     }
 
