@@ -3,10 +3,8 @@ import { connect } from 'react-redux';
 import utils from '@quantumblack/kedro-ui/lib/utils';
 import NodeList from './node-list'
 import {
-    createGroup,
     getFilteredItems,
-    // getGroups,
-    // getSections
+    getGroups,
 } from '@quantumblack/kedro-viz/lib/components/node-list/node-list-items';
 import { toggleTagActive, toggleTagFilter } from '@quantumblack/kedro-viz/lib/actions/tags';
 import { toggleTypeDisabled } from '@quantumblack/kedro-viz/lib/actions/node-type';
@@ -20,38 +18,9 @@ import {
 } from '@quantumblack/kedro-viz/lib/actions/nodes';
 import '@quantumblack/kedro-viz/lib/components/node-list/styles/node-list.css';
 import {getGroupedNodes} from "./selector";
-import { createSelector } from 'reselect';
 
 const isTagType = (type) => type === 'tag';
 
-
-/**
- * Returns groups of items per type
- * @param {array} types List of node types
- * @param {array} items List of items
- * @return {array} List of groups
- */
-export const getGroups = createSelector(
-    [(state) => state.types, (state) => state.items],
-    (nodeTypes, items) => {
-        console.log('BEG getGroups *************************************************************************')
-        console.log('nodeTypes')
-        console.log(nodeTypes)
-        console.log('items...')
-        console.log( (items))
-
-        const groups = {};
-        for (const itemType of nodeTypes) {
-            groups[itemType.id] = createGroup(itemType, items[itemType.id]);
-        }
-
-        console.log('groups')
-        console.log( groups)
-        console.log('END getGroups *************************************************************************')
-
-        return groups;
-    }
-);
 
 
 /**
@@ -79,11 +48,6 @@ const NodeListProvider = ({
                               onToggleTypeDisabled,
                           }) => {
     const [searchValue, updateSearchValue] = useState('');
-    // console.log(nodes)
-    // console.log(tags)
-    // console.log(tagsEnabled)
-    // console.log(nodeSelected)
-    // console.log(searchValue)
     const items = getFilteredItems({
         nodes,
         tags,
@@ -135,10 +99,6 @@ const NodeListProvider = ({
     };
 
     const onToggleGroupChecked = (type, checked) => {
-        console.log('---------------type')
-        console.log(type)
-        console.log('---------------checked')
-        console.log(checked)
         if (isTagType(type)) {
             // Filter all tags if at least one tag item set, otherwise enable all tags
             const tagItems = items[type] || [];
@@ -185,21 +145,10 @@ const NodeListProvider = ({
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
     });
-    // sections = [{'name':'Datasets', types:['data']}]
     const sections = [{
         'name':'Datasets',
         'types': Object.entries(items).map((el)=>(el[0]))
     }]
-    // console.log('BEG========================================================================')
-    // console.log('nodes')
-    // console.log(nodes)
-    // console.log('items')
-    // console.log(items)
-    // console.log('sec')
-    // console.log(sections)
-    // console.log('groups')
-    // console.log(groups)
-    // console.log('END========================================================================')
 
     return (
         <NodeList

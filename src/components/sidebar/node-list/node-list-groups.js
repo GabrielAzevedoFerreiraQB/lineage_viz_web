@@ -25,15 +25,12 @@ const NodeListGroups = ({
         setCollapsed(groupsCollapsed);
         saveState({ groupsCollapsed });
     };
-    // console.log(items)
-    // console.log(sections)
     return sections.map((section) => (
         <nav className="pipeline-nodelist-section kedro" key={section.name}>
             <h2 className="pipeline-nodelist-section__title">{section.name}</h2>
             <ul className="pipeline-nodelist__list">
                 {section.types.map((typeId) => {
                     const group = groups[typeId];
-                    // console.log(group)
                     return (
                         <NodeListGroup
                             group={group}

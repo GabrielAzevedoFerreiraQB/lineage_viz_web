@@ -45,7 +45,9 @@ export const NodeListGroup = ({
                 invisibleIcon={invisibleIcon}
                 onChange={(e) => {
                     onToggleChecked(id, !e.target.checked);
-                }}>
+                }}
+                type={'data'}
+                >
                 <button
                     aria-label={`${collapsed ? 'Show' : 'Hide'} ${name.toLowerCase()}`}
                     onClick={() => onToggleCollapsed(id)}
@@ -56,7 +58,7 @@ export const NodeListGroup = ({
             </NodeListRow>
         </h3>
         <NodeRowList
-            items={items}
+            items={items.map((el)=>(Object.assign({},el,{'type':'task'})))}
             group={group}
             collapsed={collapsed}
             onItemClick={onItemClick}
