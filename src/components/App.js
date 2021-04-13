@@ -12,15 +12,15 @@ class App extends React.Component {
         super(props);
         const initialState = getInitialState(props);
         // this.props.data
-        const names = {}
+        const name = {}
         const disabled = {}
         for (const o of this.props.data.tags){
-            names[o.id] = o.name;
+            name[o.id] = o.name;
             disabled[o.id] = false
         }
 
-        const a = {names,'ids':Object.entries(names).map((el)=>(el[0])),disabled}
-        // initialState.nodeType=a
+        const a = {name,'ids':Object.entries(name).map((el)=>(el[0])),disabled}
+        initialState.nodeType=a
         console.log('------------------------------------------------------')
         console.log(initialState)
         console.log('------------------------------------------------------')

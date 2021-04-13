@@ -38,11 +38,11 @@ export const getGroups = createSelector(
         console.log('nodeTypes')
         console.log(nodeTypes)
         console.log('items...')
-        console.log( Object.entries(items))
+        console.log( (items))
 
         const groups = {};
-        for (const it of Object.entries(items)) {
-            groups[it[0]] = createGroup({'id':it[0]}, items[it[0]]);
+        for (const itemType of nodeTypes) {
+            groups[itemType.id] = createGroup(itemType, items[itemType.id]);
         }
 
         console.log('groups')

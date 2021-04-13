@@ -94,7 +94,7 @@ function getDataFromPipeline(){
                 "tags": ["datas"],
                 "layer": "Model Output",
                 "pipelines": ["__default__", "de"],
-                "type": "datass"
+                "type": "datas"
             },
     ],
         "tags": [
