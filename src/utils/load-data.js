@@ -87,6 +87,15 @@ function getDataFromPipeline(){
                 "pipelines": ["__default__", "de"],
                 "type": "DataFrame3"
             },
+            {
+                "full_name": "att8",
+                "id": "9bd2dc3ab",
+                "name": "Att 6",
+                "tags": ["datas"],
+                "layer": "Model Output",
+                "pipelines": ["__default__", "de"],
+                "type": "datass"
+            },
     ],
         "tags": [
         {
@@ -100,6 +109,10 @@ function getDataFromPipeline(){
             {
                 "id": "DataFrame3",
                 "name": "DataFrame3"
+            },
+            {
+                "id": "datas",
+                "name": "datas"
             },
     ]
     }

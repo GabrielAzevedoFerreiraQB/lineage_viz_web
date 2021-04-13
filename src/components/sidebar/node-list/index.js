@@ -34,14 +34,21 @@ const isTagType = (type) => type === 'tag';
 export const getGroups = createSelector(
     [(state) => state.types, (state) => state.items],
     (nodeTypes, items) => {
+        console.log('BEG getGroups *************************************************************************')
         console.log('nodeTypes')
         console.log(nodeTypes)
         console.log('items...')
         console.log( Object.entries(items))
+
         const groups = {};
         for (const it of Object.entries(items)) {
-            groups[it[0]] = createGroup({'id':it[0]}, it);
+            groups[it[0]] = createGroup({'id':it[0]}, items[it[0]]);
         }
+
+        console.log('groups')
+        console.log( groups)
+        console.log('END getGroups *************************************************************************')
+
         return groups;
     }
 );
@@ -72,11 +79,11 @@ const NodeListProvider = ({
                               onToggleTypeDisabled,
                           }) => {
     const [searchValue, updateSearchValue] = useState('');
-    console.log(nodes)
-    console.log(tags)
-    console.log(tagsEnabled)
-    console.log(nodeSelected)
-    console.log(searchValue)
+    // console.log(nodes)
+    // console.log(tags)
+    // console.log(tagsEnabled)
+    // console.log(nodeSelected)
+    // console.log(searchValue)
     const items = getFilteredItems({
         nodes,
         tags,
@@ -128,6 +135,10 @@ const NodeListProvider = ({
     };
 
     const onToggleGroupChecked = (type, checked) => {
+        console.log('---------------type')
+        console.log(type)
+        console.log('---------------checked')
+        console.log(checked)
         if (isTagType(type)) {
             // Filter all tags if at least one tag item set, otherwise enable all tags
             const tagItems = items[type] || [];
@@ -179,14 +190,16 @@ const NodeListProvider = ({
         'name':'Datasets',
         'types': Object.entries(items).map((el)=>(el[0]))
     }]
-    console.log('nodes')
-    console.log(nodes)
-    console.log('items')
-    console.log(items)
-    console.log('sec')
-    console.log(sections)
-    console.log('groups')
-    console.log(groups)
+    // console.log('BEG========================================================================')
+    // console.log('nodes')
+    // console.log(nodes)
+    // console.log('items')
+    // console.log(items)
+    // console.log('sec')
+    // console.log(sections)
+    // console.log('groups')
+    // console.log(groups)
+    // console.log('END========================================================================')
 
     return (
         <NodeList

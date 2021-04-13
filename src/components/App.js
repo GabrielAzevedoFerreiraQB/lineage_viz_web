@@ -11,6 +11,21 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         const initialState = getInitialState(props);
+        // this.props.data
+        const names = {}
+        const disabled = {}
+        for (const o of this.props.data.tags){
+            names[o.id] = o.name;
+            disabled[o.id] = false
+        }
+
+        const a = {names,'ids':Object.entries(names).map((el)=>(el[0])),disabled}
+        // initialState.nodeType=a
+        console.log('------------------------------------------------------')
+        console.log(initialState)
+        console.log('------------------------------------------------------')
+
+
         this.store = configureStore(initialState);
         console.log('constructor:')
         console.log(this.store.getState())
@@ -21,7 +36,6 @@ class App extends React.Component {
             <Provider store={this.store}>
                 <WrapperConnect data={this.props.data}/>
             </Provider>
-
         );
     }
 }
