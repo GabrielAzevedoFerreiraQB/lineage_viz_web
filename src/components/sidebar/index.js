@@ -1,9 +1,9 @@
 import React  from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
+import '@quantumblack/kedro-viz/lib/components/sidebar/sidebar.css';
 // import NodeList from '@quantumblack/kedro-viz/lib/components/node-list';
 // import PrimaryToolbar from '@quantumblack/kedro-viz/lib/components/primary-toolbar';
-import '@quantumblack/kedro-viz/lib/components/sidebar/sidebar.css';
 import PrimaryToolbar from "./primary-toolbar";
 import NodeListProvider from './node-list/index'
 
@@ -38,14 +38,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Sidebar);
-
-
-// todo:    list of nodes and att passed as input
-// todo: collapse and toggle
-// todo:    background color right
-// todo: collapse sidebar
-// todo: improve desing search bar
-// todo: right font DONE!
-// todo:
-// todo:
-// todo:
